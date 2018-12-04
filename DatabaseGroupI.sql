@@ -18,7 +18,7 @@ create table register_barangay(
 create table register_family_name(
 	id int auto_increment primary key,
     family_name varchar(255),
-	family_size int,
+    family_size int,
     num_children int
 );
 
@@ -82,26 +82,27 @@ VALUES
 
 INSERT INTO register_family_name(family_name, family_size, num_children)
 VALUES
-	('Santos', '', ''),
-    ('Mondala', '', ''),
-    ('Manlangit', '', ''),
-    ('Diaz', '', ''),
-    ('Aranete', '', ''),
-    ('Lara', '', ''),
-    ('Mendoza', '', ''),
-    ('Faragones', '', ''),
-    ('David', '', ''),
-    ('Molina', '', ''),
-    ('Borja', '', ''),
-    ('Reyes', '', ''),
-    ('Balmes', '', ''),
-    ('Corpuz', '', ''),
-    ('Galvez', '', ''),
-    ('Dimajutoc', '', ''),
-    ('Fajardo', '', ''),
-    ('', '', ''),
-    ('', '', ''),
-    ('', '', '')
+	('Santos', 3, 1),
+    ('Mondala', 2, 0),
+    ('Manlangit', 1, 0),
+    ('Diaz', 1, 0),
+    ('Aranete', 2, 0),
+    ('Lara', 1, 0),
+    ('Mendoza', 1, 0),
+    ('Faragones', 1, 0),
+    ('David', 4, 2),
+    ('Molina', 1, 0),
+    ('Borja', 3, 1,),
+    ('Borja', 3, 1),
+    ('Reyes', 1, 0),
+    ('Balmes', 5, 3),
+    ('Corpuz', 4, 2),
+    ('Galvez', 1, 0),
+    ('Dimajutoc', 1, 0),
+    ('Fajardo', 5, 3),
+    ('', , ),
+    ('', , ),
+    ('', , )
 ;
  
 INSERT INTO register_person(person_fname, person_sname, person_age, person_gender, marital_status,
@@ -123,7 +124,7 @@ VALUES
 ('Ailyn', 'David', 36, 'female', 'married', 'barbeque_vendor' ),
 ('Arzel', 'David', 22, 'female', 'single', 'college_student' ),
 ('Jean', 'David', 19, 'female', 'single', 'college_student' ),
-('Eusebio', 'Molina', 33, 'male', 'married', 'digital_artist' ),
+('Eusebio', 'Molina', 33, 'male', 'single', 'digital_artist' ),
 ('Yolanda', 'Borja', 54, 'female', 'married', 'vegetable_vendor' ),
 ('Arvie', 'Borja', 57, 'male', 'married', 'taxi_driver' ),
 ('Jordan', 'Borja', 34, 'male', 'married', 'it_specialist' ),
