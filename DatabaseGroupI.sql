@@ -58,7 +58,7 @@ VALUES
 
 INSERT INTO register_barangay(barangay_name, barangay_population, num_family_b)
 VALUES
- 	('Brgy. 89', , ),
+	('Brgy. 89', , ),
 	('Brgy. 105', , ),
 	('Commonwealth', , ),
 	('Bukal', , ),
