@@ -82,9 +82,9 @@ VALUES
 
 INSERT INTO register_family_name(family_name, family_size, num_children)
 VALUES
-	('Dela Cruz', '', ''),
-    ('Chavez', '', ''),
-    ('Yap', '', ''),
+	('Santos', '', ''),
+    ('Mondala', '', ''),
+    ('Manlangit', '', ''),
     ('Cruz', '', ''),
     ('Dimaguiba', '', ''),
     ('Flores', '', ''),
