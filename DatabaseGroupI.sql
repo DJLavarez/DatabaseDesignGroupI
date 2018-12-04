@@ -163,7 +163,7 @@ VALUES
 
 INSERT INTO register_family_name(family_name, family_size, num_children)
 VALUES
-		('Santos', 3, 1),
+	('Santos', 3, 1),
     ('Mondala', 2, 0),
     ('Manlangit', 1, 0),
     ('Diaz', 1, 0),
