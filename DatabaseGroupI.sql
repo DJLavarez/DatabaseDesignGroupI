@@ -27,7 +27,7 @@ create table register_person(
     person_fname varchar(255),
     person_sname varchar(255),
     person_age int,
-    person_gender bool,
+    person_gender varchar(255),
     marital_status varchar(255),
     person_occupation varchar(255)
 );
@@ -427,7 +427,7 @@ VALUES
 ('Kim', 'Aycardo', 28, 'female', 'single', 'nurse'),
 ('Leo', 'Sabandal', 42, 'male', 'married', 'welder'),
 ('Melissa', 'Sabandal', 30, 'female', 'married', 'waitress'),
-('Innah, Sabandal', 20, 'female', 'single', 'teacher'),
+('Innah', 'Sabandal', 20, 'female', 'single', 'teacher'),
 ('Ryan', 'Tano', 42, 'male', 'married', 'police'),
 ('Ruth', 'Tano', 29, 'female', 'married', 'nurse'),
 ('James', 'Tano', 23, 'male', 'single', 'student'),
@@ -454,7 +454,7 @@ VALUES
 ('Jj', 'Dimagiba', 30, 'male', 'single', 'student'),
 ('John', 'Atayde', 30, 'male', 'married', 'driver'),
 ('Kimberly', 'Atayde', 30, 'female', 'married', 'manicurist'),
-('Ray', 'Atayde', 11, 'male', 'single, student'),
+('Ray', 'Atayde', 11, 'male', 'single', 'student'),
 ('Kim', 'Tividad', 54, 'male', 'married', 'engineer'),
 ('Kiara', 'Tividad', 33, 'female', 'married', 'architect'),
 ('Johna', 'Tividad', 22, 'female', 'single', 'nurse'),
@@ -513,7 +513,7 @@ VALUES
 ('Albert', 'Dela Cruz', 44, 'male', 'married', 'librarian'),
 ('Patricia', 'Dela Cruz', 34, 'female', 'married', 'overseas worker'),
 ('Jj', 'Dela Cruz', 20, 'male', 'single', 'student'),
-('Briant', 'Dela Serna', 60, 'male', 'married, driver'),
+('Briant', 'Dela Serna', 60, 'male', 'married', 'driver'),
 ('Aliana', 'Dela Serna', 56, 'female', 'married', 'vendor'),
 ('Lawrence', 'Dela Serna', 30, 'male', 'single', 'student'),
 ('Kiel', 'Donaire', 39, 'male', 'married', 'security guard'),
@@ -522,7 +522,7 @@ VALUES
 ('Martina', 'Martinez', 60, 'female', 'married', 'chef'),
 ('Andrew', 'Martinez', 54, 'male', 'married', 'programmer'),
 ('Cherry', 'Martinez', 25, 'female', 'single', 'student'),
-('Paolo', 'Ong', 42, 'male', 'married, driver'),
+('Paolo', 'Ong', 42, 'male', 'married', 'driver'),
 ('Rhenna', 'Ong', 30, 'female', 'married', 'teacher'),
 ('Erwin', 'Ong', 11, 'male', 'single', 'student'),
 ('Calvin', 'Medina', 54, 'male', 'married', 'programmer'),
@@ -626,7 +626,42 @@ VALUES
 ('Daniel', 'Garcia', 18, 'female', 'single', 'college_student')
 ;
     
+ #PERSON    
+DELIMITER &&
+CREATE PROCEDURE RegisterPerson(in fname varchar(255), in surname varchar(255), in age int, in gender varchar(255),in m_status varchar(255), in occupation varchar(255))
+	BEGIN
+    INSERT INTO register_person(person_fname, person_sname, person_age, person_gender, marital_status, person_occupation)
+    VALUES
+    (fname, surname, age, gender, m_status, occupation);
+    END &&
+DELIMITER ;
+CALL RegisterPerson('Beatriz', 'Gomez', 75, 'female', 'married', 'retired');
+drop procedure RegisterPerson;
+select * from register_person;
+
+#CITY
+DELIMITER &&
+CREATE PROCEDURE RegisterCity(in city_name varchar(255), in city_population int, in num_of_family int)
+	BEGIN
+    INSERT INTO register_city_name(city_name, city_population, num_family_c)
+    VALUES
+    (city_name, city_population, num_of_family);
+    END &&
+DELIMITER ;
+CALL RegisterCity('new york',1,2);
+drop procedure RegisterCity;
     
+#FAMILY
+DELIMITER &&
+CREATE PROCEDURE RegisterFamily(in fam_name varchar(255), in fam_size int, in num_of_children int)
+	BEGIN
+    INSERT INTO register_family_name(family_name, family_size, num_children)
+	VALUES
+    (fam_name, fam_size, num_of_children);
+    END &&
+DELIMITER ;
+CALL RegisterFamily('Rasay',4,2);
+drop procedure RegisterFamily;        
     
     
     
