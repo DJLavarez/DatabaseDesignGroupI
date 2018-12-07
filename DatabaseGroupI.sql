@@ -626,44 +626,193 @@ VALUES
 ('Daniel', 'Garcia', 18, 'female', 'single', 'college_student')
 ;
     
- #PERSON    
+#PERSON_________________________________________________________________________________________________________________________________________________________________    
+drop procedure RegisterPerson;
 DELIMITER &&
 CREATE PROCEDURE RegisterPerson(in fname varchar(255), in surname varchar(255), in age int, in gender varchar(255),in m_status varchar(255), in occupation varchar(255))
 	BEGIN
     INSERT INTO register_person(person_fname, person_sname, person_age, person_gender, marital_status, person_occupation)
     VALUES
-    (fname, surname, age, gender, m_status, occupation);
+		(fname, surname, age, gender, m_status, occupation);
     END &&
 DELIMITER ;
 CALL RegisterPerson('Beatriz', 'Gomez', 75, 'female', 'married', 'retired');
-drop procedure RegisterPerson;
-select * from register_person;
 
-#CITY
+drop procedure ViewPerson;
+DELIMITER &&
+CREATE PROCEDURE ViewPerson()
+	BEGIN
+    SELECT person_fname, person_sname, person_age, person_gender, marital_status, person_occupation
+    FROM register_person;
+    END &&
+DELIMITER ;
+CALL ViewPerson();
+
+DELIMITER && 
+CREATE PROCEDURE UpdatePerson(in fname varchar(255), in surname varchar(255), in age int, in gender varchar(255),in m_status varchar(255), in occupation varchar(255), in person_id int)
+	BEGIN
+    UPDATE register_person
+	SET 
+		person_fname = fname,
+        person_sname = surname,
+        person_age = age,
+        person_gender = gender,
+        marital_status = m_status,
+        person_occupation = occupation
+	WHERE id = person_id;
+    END &&
+DELIMITER ;
+CALL UpdatePerson('Catherine', 'Dasig', 24, 'female', 'single', 'student', 205);
+
+DELIMITER &&
+CREATE PROCEDURE DeletePersonById(in person_id int)
+	BEGIN
+    DELETE FROM register_person
+	WHERE id = person_id;
+    END &&
+DELIMITER ;
+CALL DeletePersonById(205);
+
+#CITY____________________________________________________________________________________________________________________________________________________________
+drop procedure RegisterCity;
 DELIMITER &&
 CREATE PROCEDURE RegisterCity(in city_name varchar(255), in city_population int, in num_of_family int)
 	BEGIN
     INSERT INTO register_city_name(city_name, city_population, num_family_c)
     VALUES
-    (city_name, city_population, num_of_family);
+		(city_name, city_population, num_of_family);
     END &&
 DELIMITER ;
 CALL RegisterCity('new york',1,2);
-drop procedure RegisterCity;
-    
-#FAMILY
+
+drop procedure ViewCity;
+DELIMITER &&
+CREATE PROCEDURE ViewCity()
+	BEGIN
+    SELECT city_name, city_population, num_family_c
+    FROM register_city_name;
+    END &&
+DELIMITER ;
+CALL ViewCity();
+
+drop procedure UpdateCityById;
+DELIMITER &&
+CREATE PROCEDURE UpdateCityById(in city_name varchar(255), in city_population int, in num_of_family int, in city_id int)
+	BEGIN
+    UPDATE register_city_name
+    SET
+		city_name = city_name, 
+        city_population = city_population, 
+        num_family_c = num_of_family
+	WHERE
+		id = city_id;
+    END &&
+DELIMITER ;
+CALL UpdateCityById('Caloocan',54,8,1);    
+
+drop procedure DeleteCityById;
+DELIMITER &&
+CREATE PROCEDURE DeleteCityById(in city_id int)
+	BEGIN
+    DELETE FROM register_city_name
+	WHERE id = city_id;
+    END &&
+DELIMITER ;
+CALL DeleteCityById();
+
+#Barangay______________________________________________________________________________________________________________________
+drop procedure RegisterBrgy;     
+DELIMITER &&
+CREATE PROCEDURE RegisterBrgy(in brgy_name varchar(255), in brgy_population int, in num_of_family int)
+	BEGIN
+    INSERT INTO register_barangay(barangay_name, barangay_population, num_family_b)
+	VALUES
+		(brgy_name, brgy_population, num_of_family);
+    END &&
+DELIMITER ;
+CALL RegisterBrgy('Poblacion',4,2);
+
+drop procedure ViewBrgy;
+DELIMITER &&
+CREATE PROCEDURE ViewBrgy()
+	BEGIN
+    SELECT barangay_name, barangay_population, num_family_b
+    FROM register_barangay;
+    END &&
+DELIMITER ;
+CALL ViewBrgy(); 
+
+drop procedure UpdateBrgyById;
+DELIMITER &&
+CREATE PROCEDURE UpdateBrgyById(in brgy_name varchar(255), in brgy_population int, in num_of_family int, in brgy_id int)
+	BEGIN
+    UPDATE register_barangay
+    SET
+		barangay_name = brgy_name, 
+        barangay_population = brgy_population, 
+        num_family_b = num_of_family
+	WHERE
+		id = brgy_id;
+    END &&
+DELIMITER ;
+CALL UpdateBrgyById('',1,1,1);    
+
+drop procedure DeleteBrgyById;
+DELIMITER &&
+CREATE PROCEDURE DeleteBrgyById(in brgy_id int)
+	BEGIN
+    DELETE FROM register_barangay
+	WHERE id = brgy_id;
+    END &&
+DELIMITER ;
+CALL DeleteBrgyById();
+
+#family__________________________________________________________________________________________________________________________
+drop procedure RegisterFamily;     
 DELIMITER &&
 CREATE PROCEDURE RegisterFamily(in fam_name varchar(255), in fam_size int, in num_of_children int)
 	BEGIN
     INSERT INTO register_family_name(family_name, family_size, num_children)
 	VALUES
-    (fam_name, fam_size, num_of_children);
+		(fam_name, fam_size, num_of_children);
     END &&
 DELIMITER ;
 CALL RegisterFamily('Rasay',4,2);
-drop procedure RegisterFamily;        
-    
-    
+
+drop procedure ViewFamily;
+DELIMITER &&
+CREATE PROCEDURE ViewFamily()
+	BEGIN
+    SELECT family_name, family_size, num_children
+    FROM register_family_name;
+    END &&
+DELIMITER ;
+CALL ViewFamily();   
+
+drop procedure UpdateFamilyById;
+DELIMITER &&
+CREATE PROCEDURE UpdateFamilyById(in fam_name varchar(255), in fam_size int, in num_of_children int, in family_id int)
+	BEGIN
+    UPDATE register_family_name
+    SET
+		family_name = fam_name, 
+        family_size = fam_size, 
+        num_children = num_of_children
+	WHERE
+		id = family_id;
+    END &&
+DELIMITER ;
+CALL UpdateFamilyById('',1,1,1);    
+
+drop procedure DeleteFamilyById;
+DELIMITER &&
+CREATE PROCEDURE DeleteFamilyById(in family_id int)
+	BEGIN
+    DELETE FROM register_family_name
+	WHERE id = family_id;
+    END &&
+DELIMITER ;
+CALL DeleteFamilyById();
     
     
     
