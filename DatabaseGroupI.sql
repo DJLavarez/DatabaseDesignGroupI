@@ -1,29 +1,39 @@
 create database DatabaseGroupI;
 use DatabaseGroupI;
 
+drop table register_city_name;
 create table register_city_name(
-	id int auto_increment primary key,
+	city_id int auto_increment primary key,
     city_name varchar(255),
     city_population int,
-    num_family_c int
+    num_family_c int,
+    foreign key(barangay_id) 
+		references register_barangay(barangay_id)
 );
 
+drop table register_barangay;
 create table register_barangay(
-	id int auto_increment primary key,
+	barangay_id int auto_increment primary key,
     barangay_name varchar(255),
     barangay_population int,
-    num_family_b int
+    num_family_b int,
+    foreign key(family_id)
+    	references register_family_name(family_id)
 );
 
+drop table register_family_name;
 create table register_family_name(
-	id int auto_increment primary key,
+	family_id int auto_increment primary key,
     family_name varchar(255),
     family_size int,
-    num_children int
+    num_children int,
+    foreign key(person_id)
+    	references register_person(person_id)
 );
 
+drop table register_person;
 create table register_person(
-	id int auto_increment primary key,
+	person_id int auto_increment primary key,
     person_fname varchar(255),
     person_sname varchar(255),
     person_age int,
