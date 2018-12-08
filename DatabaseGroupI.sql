@@ -37,7 +37,7 @@ create table register_person(
     person_age int,
     person_gender varchar(255),
     marital_status varchar(255),
-    person_occupation varchar(255)
+    person_occupation varchar(255),
     foreign key(family_id)
     	references register_family_name(family_id)
 );
