@@ -906,8 +906,12 @@ order by c.city_name, b.barangay_name asc
 
 
  #query3
-select c.city_name, avg(num_family_c)
-from register_city_name as c
+select c.city_name, b.barangay_name, f.family_size
+from register_family_name as f
+	inner join register_city_name as c
+		on c.city_id = f.family_id
+	inner join register_barangay as b
+		on b.barangay_id = f.family_id
 order by c.city_name
 ;
 
