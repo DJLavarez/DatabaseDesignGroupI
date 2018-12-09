@@ -897,9 +897,11 @@ from register_city_name as c
 
 
  #query2
-select c.city_name, c.city_population
+select c.city_name, c.city_population, b.barangay_name, b.barangay_population
 from register_city_name as c
-order by c.city_name asc
+inner join register_barangay as b
+on c.city_id = b.barangay_id
+order by c.city_name, b.barangay_name asc
 ;
 
 
