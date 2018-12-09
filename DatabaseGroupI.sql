@@ -894,6 +894,22 @@ from register_city_name as c
 	inner join register_family_name as f
 		on b.barangay_d = f.barangay_id
 ;
+
+
+ #query2
+select c.city_name, c.city_population
+from register_city_name as c
+order by c.city_name asc
+;
+
+
+ #query3
+select c.city_name, avg(num_family_c)
+from register_city_name as c
+order by c.city_name
+;
+
+
  #query4
 select c.city_name, b.barangay_name, o.occupation
 from register_city_name as c
