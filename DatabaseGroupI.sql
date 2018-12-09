@@ -884,6 +884,40 @@ CREATE PROCEDURE DeleteFamilyById(in fam_id int)
     END &&
 DELIMITER ;
 CALL DeleteFamilyById(1);
+
+
+#query 1
+select c.city_name, b.barangay_name, b.num_family
+from register_city_name as c
+	inner join register_barangay as b
+		on c.city_id = b.barangay_id 
+	inner join register_family_name as f
+		on b.barangay_d = f.barangay_id
+;
+ #query4
+select c.city_name, b.barangay_name, o.occupation
+from register_city_name as c
+inner join register_barangay as b on c.city_id = b.city_id
+inner join (
+  select b.barangay_id,
+    count(p.person_occupation) as occupation
+  from register_family_name as f
+  inner join register_person as p on p.family_id = f.family_id
+  group by b.barangay_id
+) as f
+on f.barangay_id = b.barangay_id
+group by c.city_name, b.barangay_name, o.occupation;
+    
+  
+#query 5
+select c.city_name, b.barangay_name
+from register_city_name as c
+inner join register_barangay as b
+on c.city_id = b.barangay_id
+where barangay_population > 
+	(select avg(barangay_population)
+	from register_barangay);
+    
     
 
 
