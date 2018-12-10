@@ -904,7 +904,24 @@ from register_family_name as f
 		on b.barangay_id = f.family_id
 order by c.city_name
 ;
-    
+ 
+ #query4
+select
+count(p.person_id) as occupation_count,
+p.person_occupation,
+b.barangay_name,
+c.city_name
+from register_person as p
+INNER join register_family_name as f
+  on f.family_id = p.family_id
+INNER join register_barangay as b
+  on b.barangay_id = f.barangay_id
+INNER join register_city_name as c
+  as c.city_id = b.city_id
+group by p.person_occupation,
+  b.barangay_name,
+  c.city_name
+order by occupation_count desc;  
   
 #query 5
 select c.city_name, b.barangay_name
