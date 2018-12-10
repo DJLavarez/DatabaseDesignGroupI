@@ -921,7 +921,8 @@ INNER join register_city_name as c
 group by p.person_occupation,
   b.barangay_name,
   c.city_name
-order by occupation_count desc;  
+order by occupation_count desc
+limit 5;  
   
 #query 5
 select c.city_name, b.barangay_name
