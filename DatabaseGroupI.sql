@@ -885,6 +885,16 @@ CREATE PROCEDURE DeleteFamilyById(in fam_id int)
 DELIMITER ;
 CALL DeleteFamilyById(1);
 
+#query1
+select c.city_name, b.barangay_name, count(f.family_id) as family_count
+from register_family_name as f
+inner join register_barangay as b
+on f.barangay_id = b.barangay_id
+inner join register_city_name as c 
+on b.city_id = c.city_id
+where f.family_size > 1
+group by b.barangay_name, c.city_name
+order by family_count desc;
 
  #query2
 select c.city_name, c.city_population, b.barangay_name, b.barangay_population
