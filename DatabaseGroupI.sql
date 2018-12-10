@@ -886,16 +886,6 @@ DELIMITER ;
 CALL DeleteFamilyById(1);
 
 
-#query 1
-select c.city_name, b.barangay_name, b.num_family
-from register_city_name as c
-	inner join register_barangay as b
-		on c.city_id = b.barangay_id 
-	inner join register_family_name as f
-		on b.barangay_d = f.barangay_id
-;
-
-
  #query2
 select c.city_name, c.city_population, b.barangay_name, b.barangay_population
 from register_city_name as c
@@ -914,21 +904,6 @@ from register_family_name as f
 		on b.barangay_id = f.family_id
 order by c.city_name
 ;
-
-
- #query4
-select c.city_name, b.barangay_name, o.occupation
-from register_city_name as c
-inner join register_barangay as b on c.city_id = b.city_id
-inner join (
-  select b.barangay_id,
-    count(p.person_occupation) as occupation
-  from register_family_name as f
-  inner join register_person as p on p.family_id = f.family_id
-  group by b.barangay_id
-) as f
-on f.barangay_id = b.barangay_id
-group by c.city_name, b.barangay_name, o.occupation;
     
   
 #query 5
